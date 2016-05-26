@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<style>
+		body, div, ul, li{
+			margin:0;
+			padding:0;
+		}
+		body{
+			overflow:hidden;
+		}
+		li{
+			list-style:none;
+		}
+		.wrap{
+			width:312px;
+			height:270px;
+			margin:50px auto;
+			overflow:hidden;
+		}
+		li{
+			float:left;
+			width:104px;
+			height:90px;
+			position:relative;
+			overflow:hidden;
+		}
+		li div{
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+			transition:1.5s;
+			-webkit-backface-visibility:hidden;
+			-moz-backface-visibility:hidden;
+			-ms-backface-visibility:hidden;
+			backface-visibility:hidden;
+		}
+		li:nth-of-type(2n) div{
+			width:200%;
+			height:200%;
+		}
+		.trun .one{
+			transform:rotateY(180deg);
+		}
+		.trun .two{
+			z-index:2;
+			transform:rotateY(0deg);
+		}
+		.trun:nth-of-type(2n+1) .two{
+			transform:rotateY(0);
+		}
+		.trun:nth-of-type(2n) .two{
+			transform:rotateX(0);
+		}
+		li:nth-of-type(2n+1) .two, .trun:nth-of-type(2n+1) .one{
+			transform:rotateY(180deg);
+		}
+		li:nth-of-type(2n) .two, .trun:nth-of-type(2n) .one{
+			transform:rotateX(180deg);
+		}
+		li:nth-of-type(2) div, li:nth-of-type(4) div{
+			transform-origin:25% 25%;
+		}
+		li:nth-of-type(6) div{
+			transform-origin:75% 25%;
+		}
+		li:nth-of-type(8) div{
+			transform-origin:25% 75%;
+		}
+
+		li:nth-of-type(1) .one{
+			background:-webkit-radial-gradient(150% 150%, #fff 6%, #444 50%, #666 100%);
+			background:-moz-radial-gradient(150% 150%, #fff 6%, #444 50%, #666 100%);
+			background:-ms-radial-gradient(150% 150%, #fff 6%, #444 50%, #666 100%);
+		}
+		li:nth-of-type(2) .one{
+			background:-webkit-radial-gradient(25% 75%, #fff 6%, #444 50%, #666 100%);
+			background:-moz-radial-gradient(25% 75%, #fff 6%, #444 50%, #666 100%);
+			background:-ms-radial-gradient(25% 75%, #fff 6%, #444 50%, #666 100%);
+		}
+		li:nth-of-type(3) .one{
+			background:-webkit-radial-gradient(-50% 150%, #fff 6%, #444 50%, #666 100%);
+			background:-moz-radial-gradient(-50% 150%, #fff 6%, #444 50%, #666 100%);
+			background:-ms-radial-gradient(-50% 150%, #fff 6%, #444 50%, #666 100%);
+		}
+		li:nth-of-type(4) .one{
+			background:-webkit-radial-gradient(75% 25%, #fff 6%, #444 50%, #666 100%);
+			background:-moz-radial-gradient(75% 25%, #fff 6%, #444 50%, #666 100%);
+			background:-ms-radial-gradient(75% 25%, #fff 6%, #444 50%, #666 100%);
+		}
+		li:nth-of-type(5) .one{
+			background:radial-gradient(#fff 18%, #444 150%, #666 300%);
+		}
+		li:nth-of-type(6) .one{
+			left:-100%;
+			background:-webkit-radial-gradient(25% 25%, #fff 6%, #444 50%, #666 100%);
+			background:-moz-radial-gradient(25% 25%, #fff 6%, #444 50%, #666 100%);
+			background:-ms-radial-gradient(25% 25%, #fff 6%, #444 50%, #666 100%);
+		}
+		li:nth-of-type(7) .one{
+			background:-webkit-radial-gradient(150% -50%, #fff 6%, #444 50%, #666 100%);
+			background:-moz-radial-gradient(150% -50%, #fff 6%, #444 50%, #666 100%);
+			background:-ms-radial-gradient(150% -50%, #fff 6%, #444 50%, #666 100%);
+		}
+		li:nth-of-type(8) .one{			
+			top:-100%;
+			background:-webkit-radial-gradient(25% 25%, #fff 6%, #444 50%, #666 100%);
+			background:-moz-radial-gradient(25% 25%, #fff 6%, #444 50%, #666 100%);
+			background:-ms-radial-gradient(25% 25%, #fff 6%, #444 50%, #666 100%);
+		}
+		li:nth-of-type(9) .one{
+			background:-webkit-radial-gradient(-50% -50%, #fff 6%, #444 50%, #666 100%);
+			background:-moz-radial-gradient(-50% -50%, #fff 6%, #444 50%, #666 100%);
+			background:-ms-radial-gradient(-50% -50%, #fff 6%, #444 50%, #666 100%);
+		}
+
+		li:nth-of-type(1) .two{
+			background:-webkit-radial-gradient(150% 150%, #000 6%, #ccc 50%, #333 100%);
+			background:-moz-radial-gradient(150% 150%, #000 6%, #ccc 50%, #333 100%);
+			background:-ms-radial-gradient(150% 150%, #000 6%, #ccc 50%, #333 100%);
+		}
+		li:nth-of-type(2) .two{
+			background:-webkit-radial-gradient(25% 75%, #000 6%, #ccc 50%, #333 100%);
+			background:-moz-radial-gradient(25% 75%, #000 6%, #ccc 50%, #333 100%);
+			background:-ms-radial-gradient(25% 75%, #000 6%, #ccc 50%, #333 100%);
+		}
+		li:nth-of-type(3) .two{
+			background:-webkit-radial-gradient(-50% 150%, #000 6%, #ccc 50%, #333 100%);
+			background:-moz-radial-gradient(-50% 150%, #000 6%, #ccc 50%, #333 100%);
+			background:-ms-radial-gradient(-50% 150%, #000 6%, #ccc 50%, #333 100%);
+		}
+		li:nth-of-type(4) .two{
+			background:-webkit-radial-gradient(75% 25%, #000 6%, #ccc 50%, #333 100%);
+			background:-moz-radial-gradient(75% 25%, #000 6%, #ccc 50%, #333 100%);
+			background:-ms-radial-gradient(75% 25%, #000 6%, #ccc 50%, #333 100%);
+		}
+		li:nth-of-type(5) .two{
+			background:radial-gradient(#000 18%, #ccc 150%, #333 300%);
+		}
+		li:nth-of-type(6) .two{
+			left:-100%;
+			background:-webkit-radial-gradient(25% 25%, #000 6%, #ccc 50%, #333 100%);
+			background:-moz-radial-gradient(25% 25%, #000 6%, #ccc 50%, #333 100%);
+			background:-ms-radial-gradient(25% 25%, #000 6%, #ccc 50%, #333 100%);
+		}
+		li:nth-of-type(7) .two{
+			background:-webkit-radial-gradient(150% -50%, #000 6%, #ccc 50%, #333 100%);
+			background:-moz-radial-gradient(150% -50%, #000 6%, #ccc 50%, #333 100%);
+			background:-ms-radial-gradient(150% -50%, #000 6%, #ccc 50%, #333 100%);
+		}
+		li:nth-of-type(8) .two{			
+			top:-100%;
+			background:-webkit-radial-gradient(25% 25%, #000 6%, #ccc 50%, #333 100%);
+			background:-moz-radial-gradient(25% 25%, #000 6%, #ccc 50%, #333 100%);
+			background:-ms-radial-gradient(25% 25%, #000 6%, #ccc 50%, #333 100%);
+		}
+		li:nth-of-type(9) .two{
+			background:-webkit-radial-gradient(-50% -50%, #000 6%, #ccc 50%, #333 100%);
+			background:-moz-radial-gradient(-50% -50%, #000 6%, #ccc 50%, #333 100%);
+			background:-ms-radial-gradient(-50% -50%, #000 6%, #ccc 50%, #333 100%);
+		}
+	</style>
+	<ul class="wrap">
+		<li>
+			<div class="one"></div>
+			<div class="two"></div>
+		</li>
+		<li>
+			<div class="one"></div>
+			<div class="two"></div>
+		</li>
+		<li>
+			<div class="one"></div>
+			<div class="two"></div>
+		</li>
+		<li>
+			<div class="one"></div>
+			<div class="two"></div>
+		</li>
+		<li>
+			<div class="one"></div>
+			<div class="two"></div>
+		</li>
+		<li>
+			<div class="one"></div>
+			<div class="two"></div>
+		</li>
+		<li>
+			<div class="one"></div>
+			<div class="two"></div>
+		</li>
+		<li>
+			<div class="one"></div>
+			<div class="two"></div>
+		</li>
+		<li>
+			<div class="one"></div>
+			<div class="two"></div>
+		</li>
+	</ul>
+
+	<script>
+		var aLi = document.querySelectorAll('li');
+		document.body.onclick=function(){
+			for(var i=0,e;e=aLi[i++];){
+				e.classList.toggle('trun');
+			}
+		}
+	</script>
+</body>
+</html>
